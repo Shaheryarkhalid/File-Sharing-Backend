@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const Controllers_1 = require("../Controllers");
+const Middlewares_1 = require("../Middlewares");
+const fileRouter = (0, express_1.Router)();
+fileRouter.get('/userfiles', Middlewares_1.Authenticate, Controllers_1.GetFiles);
+fileRouter.post('/share', Controllers_1.ShareFile);
+fileRouter.get('/single/:fileName', Controllers_1.GetSingleFile);
+exports.default = fileRouter;

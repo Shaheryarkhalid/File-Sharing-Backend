@@ -1,0 +1,6 @@
+export { default as Register } from './Register'
+export { default as Login } from './Login'
+export { default as Upload } from './Upload'
+export { default as GetFiles } from './GetFiles' 
+export { default as GetSingleFile } from './GetSingleFile'
+export { default as ShareFile } from './ShareFile'
