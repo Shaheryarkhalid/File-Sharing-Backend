@@ -4,6 +4,7 @@ interface IFile extends Document {
 	name: string;
 	shared: boolean;
 	uploadedBy: mongoose.Schema.Types.ObjectId;
+	views: number;
 	meta: {
 	  createdAt: Date;
 	  updatedAt: Date;
@@ -24,6 +25,10 @@ const fileSchema = new Schema(
       ref: 'User', 
       required: true
     },
+	views: {
+		type: Number,
+		default: 0
+	},
     meta: {
       createdAt: {
         type: Date,

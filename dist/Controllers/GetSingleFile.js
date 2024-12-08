@@ -25,12 +25,16 @@ function GetSingleFile(req, res) {
         console.log(fileInDatabase);
         if (!fileInDatabase)
             return res.status(403).status({ success: false, error: 'Invalid File Name.' });
-        if (fileInDatabase.shared)
+        if (fileInDatabase.shared) {
+            fileInDatabase.views = fileInDatabase.views + 1;
+            yield fileInDatabase.save();
             return res.sendFile(filePath);
-        console.log(fileInDatabase.uploadedBy);
-        console.log(req.session.user);
-        if (fileInDatabase.uploadedBy.toString() === req.session.user)
+        }
+        if (fileInDatabase.uploadedBy.toString() === req.session.user) {
+            fileInDatabase.views = fileInDatabase.views + 1;
+            yield fileInDatabase.save();
             return res.sendFile(filePath);
+        }
         res.status(401).json({ success: false, error: 'Unauthourized access' });
     });
 }

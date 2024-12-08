@@ -48,6 +48,10 @@ const fileSchema = new mongoose_1.Schema({
         ref: 'User',
         required: true
     },
+    views: {
+        type: Number,
+        default: 0
+    },
     meta: {
         createdAt: {
             type: Date,
