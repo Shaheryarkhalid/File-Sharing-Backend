@@ -32,10 +32,10 @@ app.use((0, express_session_1.default)({
         maxAge: 1000 * 60 * 60
     }
 }));
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
     res.json({ success: true, message: 'Home api hit' });
 });
-app.use('/auth', Routes_1.authRouter);
-app.use('/upload', Routes_1.uploadRouter);
-app.use('/file', Routes_1.fileRouter);
+app.use('/api/auth', Routes_1.authRouter);
+app.use('/api/upload', Routes_1.uploadRouter);
+app.use('/api/file', Routes_1.fileRouter);
 app.listen(8080, () => console.log('Server Listening on http://localhost:8080'));

@@ -30,10 +30,10 @@ app.use(session({
     }
 }));
 
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
 	 res.json({ success: true, message: 'Home api hit' });
 })
-app.use('/auth', authRouter)
-app.use('/upload', uploadRouter)
-app.use('/file', fileRouter)
+app.use('/api/auth', authRouter)
+app.use('/api/upload', uploadRouter)
+app.use('/api/file', fileRouter)
 app.listen(8080, () => console.log('Server Listening on http://localhost:8080'))
